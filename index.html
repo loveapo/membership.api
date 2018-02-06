@@ -1,12 +1,1162 @@
 <!DOCTYPE HTML>
 <html>
 <meta charset="utf-8">
-<!-- <link href="style.css" rel="stylesheet"/> -->
-<!-- <script src="app.js"></script> -->
+<link href="style.css" rel="stylesheet"/>
+<script src="jquery.js"></script>
 <head>
     <title>Membership API Reference</title>
 </head>
 <body>
-<h1>hahaha</h1>
+
+<div class="wrap">
+    <div class="title">Membership API Reference</div>
+
+    <h1>API 목록</h1>
+
+    <h3>Members</h3>
+    <h4>회원정보 조회/추가/수정/삭제</h4>
+
+    <div class="list">
+        <ul>
+            <li class="get">
+                <div class="heading">
+                    <span class="type">GET</span>
+                    <span class="path">/db/members</span>
+                    <span class="comment">회원 리스트 출력</span>
+                </div>
+                <div class="content none">
+                    <h5>Parameters</h5>
+                    <div class="tab">
+                        <dl>
+                            <dt data-type="in" class="on">In</dt>
+                            <dt data-type="out">Out</dt>
+                        </dl>
+                    </div>
+                    <div class="in">
+                        <table>
+                            <colgroup>
+                                <col style="width:10%;">
+                                <col>
+                                <col style="width:20%;">
+                                <col style="width:20%;">
+                                <col style="width:90px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Value</th>
+                                    <th>Defualt</th>
+                                    <th>Description</th>
+                                    <th>Data Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="code">pg</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td>1</td>
+                                    <td>출력 페이지</td>
+                                    <td><span class="model-signature">Number</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">pgSize</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td>30</td>
+                                    <td>페이지 출력수</td>
+                                    <td><span class="model-signature">Number</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">sort</td>
+                                    <td>
+                                        <select class="">
+                                            <option></option>
+                                            <option>[field name]_asc</option>
+                                            <option>[field name]_desc</option>
+                                        </select>
+                                    </td>
+                                    <td>order.ord_id_desc</td>
+                                    <td>페이지 정렬</td>
+                                    <td><span class="model-signature">String</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="out none">
+<pre><code>{
+"users": {
+    "current_page": 1,
+    "data": {
+        "0": {
+            "id": 1,
+            "name": "박요한",
+            "email": "yp811216@gmail.com",
+            "gender": "male",
+            "birth": "0000-00-00",
+            "phone": "010-8939-5088",
+            "address": "경기 성남시 분당구 판교로227번길 6 브릿지타워 803호",
+            "occupation": "IT 개발자",
+            "password": "$2y$10$KAdjmzESOMtiAMYPL3fE6Oog1UBJKJHyx4.CVXJ8ta2uiUTj/7OnS",
+            "auth": 1,
+            "remember_token": null,
+            "created_at": "2018-01-18 10:37:00",
+            "updated_at": "2018-01-18 10:37:00"
+        },
+        "1": {
+            "id": 2,
+            "name": "Amber",
+            "email": "amber@hasya.co.kr",
+            "gender": "female",
+            "birth": "0000-00-00",
+            "phone": "",
+            "address": "",
+            "occupation": "",
+            "password": "$2y$10$rxMJPuH6K/kKCtTWri2O1esmA06nOutH5ioATjR.IJjnMb4WLxJEy",
+            "auth": 1,
+            "remember_token": null,
+            "created_at": "2018-01-18 10:37:00",
+            "updated_at": "2018-01-18 10:37:00"
+        },
+        "2": {
+            "id": 3,
+            "name": "SUMI",
+            "email": "sumir@hasya.co.kr",
+            "gender": "female",
+            "birth": "0000-00-00",
+            "phone": "",
+            "address": "",
+            "occupation": "",
+            "password": "$2y$10$rxMJPuH6K/kKCtTWri2O1esmA06nOutH5ioATjR.IJjnMb4WLxJEy",
+            "auth": 1,
+            "remember_token": null,
+            "created_at": "2018-01-18 10:37:00",
+            "updated_at": "2018-01-18 10:37:00"
+        },
+        [...]
+        "fields": [
+            {
+                "field": "name",
+                "title": "회원명",
+                "width": "100",
+                "filter": "on"
+            },
+            {
+                "field": "gender",
+                "title": "성별",
+                "width": "80",
+                "filter": "on"
+            },
+            {
+                "field": "birth",
+                "title": "생년월일",
+                "width": "110",
+                "filter": "on"
+            }
+        },
+        [...]
+        "sort": "created_at_dsc",
+        "ord_status": ""
+    },
+    "first_page_url": "/member/users?page=1",
+    "from": 1,
+    "last_page": 1,
+    "last_page_url": "/member/users?page=1",
+    "next_page_url": null,
+    "path": "/member/users",
+    "per_page": 30,
+    "prev_page_url": null,
+    "to": 4,
+    "total": 1
+    }
+}</code></pre>
+                    </div>
+                </div>
+            </li>
+
+            <li class="get">
+                <div class="heading">
+                    <span class="type">GET</span>
+                    <span class="path">/db/member/{id}</span>
+                    <span class="comment">회원 정보 출력</span>
+                </div>
+
+                <div class="content none">
+                    <h5>Parameters</h5>
+                    <div class="tab">
+                        <dl>
+                            <dt data-type="in" class="on">In</dt>
+                            <dt data-type="out">Out</dt>
+                        </dl>
+                    </div>
+                    <div class="in">
+                        <table>
+                            <colgroup>
+                                <col style="width:10%;">
+                                <col>
+                                <col style="width:20%;">
+                                <col style="width:20%;">
+                                <col style="width:90px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Value</th>
+                                    <th>Defualt</th>
+                                    <th>Description</th>
+                                    <th>Data Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="code">id</td>
+                                    <td><input class="parameter required" minlength="1" placeholder="(required)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>회원아이디</td>
+                                    <td><span class="model-signature">Number</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="out none">
+<pre><code>{
+    "user": {
+        "id": 1,
+        "name": "박요한",
+        "email": "yp811216@gmail.com",
+        "gender": "male",
+        "birth": "1981-12-16",
+        "phone": "010-8939-5088",
+        "address": "경기 성남시 분당구 판교로227번길 6 브릿지타워 803호",
+        "occupation": "IT 개발자",
+        "password": "$2y$10$KAdjmzESOMtiAMYPL3fE6Oog1UBJKJHyx4.CVXJ8ta2uiUTj/7OnS",
+        "auth": 1,
+        "remember_token": null,
+        "created_at": "2018-01-18 10:37:00",
+        "updated_at": "2018-01-18 10:37:00"
+    }
+}
+</code></pre>
+                    </div>
+                </div>
+            </li>
+
+            <li class="post">
+                <div class="heading">
+                    <span class="type">POST</span>
+                    <span class="path">/db/member</span>
+                    <span class="comment">회원 추가하기</span>
+                </div>
+                <div class="content none">
+                    <h5>Parameters</h5>
+                    <div class="tab">
+                        <dl>
+                            <dt data-type="in" class="on">In</dt>
+                            <dt data-type="out">Out</dt>
+                        </dl>
+                    </div>
+                    <div class="in">
+                        <table>
+                            <colgroup>
+                                <col style="width:10%;">
+                                <col>
+                                <col style="width:20%;">
+                                <col style="width:20%;">
+                                <col style="width:90px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Value</th>
+                                    <th>Defualt</th>
+                                    <th>Description</th>
+                                    <th>Data Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="code">name</td>
+                                    <td><input class="parameter required" minlength="1" placeholder="(required)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>회원명</td>
+                                    <td><span class="model-signature">String</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">email</td>
+                                    <td><input class="parameter required" minlength="1" placeholder="(required)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>이메일</td>
+                                    <td><span class="model-signature">String</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">birth</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>생년월일</td>
+                                    <td><span class="model-signature">Date</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">phone</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>전화번호</td>
+                                    <td><span class="model-signature">String</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">address</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>주소</td>
+                                    <td><span class="model-signature">String</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">occupation</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>직업</td>
+                                    <td><span class="model-signature">String</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">password</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>패스워드</td>
+                                    <td><span class="model-signature">String</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="out none">
+<pre><code>// Sucess
+{
+    "result": "sucess"
+}
+
+// Error
+{
+    "result": "error"
+}
+</code></pre>
+                    </div>
+                </div>
+            </li>
+            <li class="put">
+                <div class="heading">
+                    <span class="type">PUT</span>
+                    <span class="path">/db/member/{id}</span>
+                    <span class="comment">회원정보 업데이트</span>
+                </div>
+                <div class="content none">
+                    <h5>Parameters</h5>
+                    <div class="tab">
+                        <dl>
+                            <dt data-type="in" class="on">In</dt>
+                            <dt data-type="out">Out</dt>
+                        </dl>
+                    </div>
+                    <div class="in">
+                        <table>
+                            <colgroup>
+                                <col style="width:10%;">
+                                <col>
+                                <col style="width:20%;">
+                                <col style="width:20%;">
+                                <col style="width:90px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Value</th>
+                                    <th>Defualt</th>
+                                    <th>Description</th>
+                                    <th>Data Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="code">id</td>
+                                    <td><input class="parameter required" minlength="1" placeholder="(required)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>회원 ID</td>
+                                    <td><span class="model-signature">Number</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">name</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>회원명</td>
+                                    <td><span class="model-signature">String</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">email</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>이메일</td>
+                                    <td><span class="model-signature">String</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">birth</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>생년월일</td>
+                                    <td><span class="model-signature">Date</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">phone</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>전화번호</td>
+                                    <td><span class="model-signature">String</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">address</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>주소</td>
+                                    <td><span class="model-signature">String</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">occupation</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>직업</td>
+                                    <td><span class="model-signature">String</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="out none">
+<pre><code>// Sucess
+{
+    "result": "sucess"
+}
+
+// Error
+{
+    "result": "error"
+}
+</code></pre>
+                    </div>
+                </div>
+            </li>
+
+            <li class="delete">
+                <div class="heading">
+                    <span class="type">DELETE</span>
+                    <span class="path">/db/member/{id}</span>
+                    <span class="comment">회원 삭제하기</span>
+                </div>
+                <div class="content none">
+                    <h5>Parameters</h5>
+                    <div class="tab">
+                        <dl>
+                            <dt data-type="in" class="on">In</dt>
+                            <dt data-type="out">Out</dt>
+                        </dl>
+                    </div>
+                    <div class="in">
+                        <table>
+                            <colgroup>
+                                <col style="width:10%;">
+                                <col>
+                                <col style="width:20%;">
+                                <col style="width:20%;">
+                                <col style="width:90px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Value</th>
+                                    <th>Defualt</th>
+                                    <th>Description</th>
+                                    <th>Data Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="code">id</td>
+                                    <td><input class="parameter required" minlength="1" placeholder="(required)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>회원 ID</td>
+                                    <td><span class="model-signature">Number</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="out none">
+<pre><code>// Sucess
+{
+    "result": "sucess"
+}
+
+// Error
+{
+    "result": "error"
+}
+</code></pre>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+
+<!-- Teachers -->
+    <h3>Teachers</h3>
+    <h4>강사정보 조회/추가/수정/삭제</h4>
+    <div class="list">
+        <ul>
+            <li class="get">
+                <div class="heading">
+                    <span class="type">GET</span>
+                    <span class="path">/db/teachers</span>
+                    <span class="comment">강사 리스트 출력</span>
+                </div>
+                <div class="content none">
+                    <h5>Parameters</h5>
+                    <div class="tab">
+                        <dl>
+                            <dt data-type="in" class="on">In</dt>
+                            <dt data-type="out">Out</dt>
+                        </dl>
+                    </div>
+                    <div class="in">
+                        <table>
+                            <colgroup>
+                                <col style="width:10%;">
+                                <col>
+                                <col style="width:20%;">
+                                <col style="width:20%;">
+                                <col style="width:90px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Value</th>
+                                    <th>Defualt</th>
+                                    <th>Description</th>
+                                    <th>Data Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="code">pg</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td>1</td>
+                                    <td>출력 페이지</td>
+                                    <td><span class="model-signature">Number</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">pgSize</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td>30</td>
+                                    <td>페이지 출력수</td>
+                                    <td><span class="model-signature">Number</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">sort</td>
+                                    <td>
+                                        <select class="">
+                                            <option></option>
+                                            <option>[field name]_asc</option>
+                                            <option>[field name]_desc</option>
+                                        </select>
+                                    </td>
+                                    <td>order.ord_id_desc</td>
+                                    <td>페이지 정렬</td>
+                                    <td><span class="model-signature">String</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="out none">
+<pre><code>{
+"users": {
+    "current_page": 1,
+    "data": {
+        "0": {
+            "id": 1,
+            "name": "박요한",
+            "email": "yp811216@gmail.com",
+            "gender": "male",
+            "birth": "0000-00-00",
+            "phone": "010-8939-5088",
+            "address": "경기 성남시 분당구 판교로227번길 6 브릿지타워 803호",
+            "occupation": "IT 개발자",
+            "password": "$2y$10$KAdjmzESOMtiAMYPL3fE6Oog1UBJKJHyx4.CVXJ8ta2uiUTj/7OnS",
+            "auth": 99,
+            "remember_token": null,
+            "created_at": "2018-01-18 10:37:00",
+            "updated_at": "2018-01-18 10:37:00"
+        },
+        "1": {
+            "id": 2,
+            "name": "Amber",
+            "email": "amber@hasya.co.kr",
+            "gender": "female",
+            "birth": "0000-00-00",
+            "phone": "",
+            "address": "",
+            "occupation": "",
+            "password": "$2y$10$rxMJPuH6K/kKCtTWri2O1esmA06nOutH5ioATjR.IJjnMb4WLxJEy",
+            "auth": 10,
+            "remember_token": null,
+            "created_at": "2018-01-18 10:37:00",
+            "updated_at": "2018-01-18 10:37:00"
+        },
+        "2": {
+            "id": 3,
+            "name": "SUMI",
+            "email": "sumir@hasya.co.kr",
+            "gender": "female",
+            "birth": "0000-00-00",
+            "phone": "",
+            "address": "",
+            "occupation": "",
+            "password": "$2y$10$rxMJPuH6K/kKCtTWri2O1esmA06nOutH5ioATjR.IJjnMb4WLxJEy",
+            "auth": 10,
+            "remember_token": null,
+            "created_at": "2018-01-18 10:37:00",
+            "updated_at": "2018-01-18 10:37:00"
+        },
+        [...]
+        "fields": [
+            {
+                "field": "name",
+                "title": "회원명",
+                "width": "100",
+                "filter": "on"
+            },
+            {
+                "field": "gender",
+                "title": "성별",
+                "width": "80",
+                "filter": "on"
+            },
+            {
+                "field": "birth",
+                "title": "생년월일",
+                "width": "110",
+                "filter": "on"
+            }
+        },
+        [...]
+        "sort": "created_at_dsc",
+        "ord_status": ""
+    },
+    "first_page_url": "/member/users?page=1",
+    "from": 1,
+    "last_page": 1,
+    "last_page_url": "/member/users?page=1",
+    "next_page_url": null,
+    "path": "/member/users",
+    "per_page": 30,
+    "prev_page_url": null,
+    "to": 4,
+    "total": 1
+    }
+}</code></pre>
+                    </div>
+                </div>
+            </li>
+
+            <li class="get">
+                <div class="heading">
+                    <span class="type">GET</span>
+                    <span class="path">/db/teacher/{id}</span>
+                    <span class="comment">강사 정보 출력</span>
+                </div>
+
+                <div class="content none">
+                    <h5>Parameters</h5>
+                    <div class="tab">
+                        <dl>
+                            <dt data-type="in" class="on">In</dt>
+                            <dt data-type="out">Out</dt>
+                        </dl>
+                    </div>
+                    <div class="in">
+                        <table>
+                            <colgroup>
+                                <col style="width:10%;">
+                                <col>
+                                <col style="width:20%;">
+                                <col style="width:20%;">
+                                <col style="width:90px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Value</th>
+                                    <th>Defualt</th>
+                                    <th>Description</th>
+                                    <th>Data Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="code">id</td>
+                                    <td><input class="parameter required" minlength="1" placeholder="(required)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>회원아이디</td>
+                                    <td><span class="model-signature">Number</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="out none">
+<pre><code>{
+    "user": {
+        "id": 1,
+        "name": "박요한",
+        "email": "yp811216@gmail.com",
+        "gender": "male",
+        "birth": "1981-12-16",
+        "phone": "010-8939-5088",
+        "address": "경기 성남시 분당구 판교로227번길 6 브릿지타워 803호",
+        "occupation": "IT 개발자",
+        "password": "$2y$10$KAdjmzESOMtiAMYPL3fE6Oog1UBJKJHyx4.CVXJ8ta2uiUTj/7OnS",
+        "auth": 99,
+        "remember_token": null,
+        "created_at": "2018-01-18 10:37:00",
+        "updated_at": "2018-01-18 10:37:00"
+    }
+}
+</code></pre>
+                    </div>
+                </div>
+            </li>
+
+            <li class="post">
+                <div class="heading">
+                    <span class="type">POST</span>
+                    <span class="path">/db/teacher</span>
+                    <span class="comment">강사 추가하기</span>
+                </div>
+                <div class="content none">
+                    <h5>Parameters</h5>
+                    <div class="tab">
+                        <dl>
+                            <dt data-type="in" class="on">In</dt>
+                            <dt data-type="out">Out</dt>
+                        </dl>
+                    </div>
+                    <div class="in">
+                        <table>
+                            <colgroup>
+                                <col style="width:10%;">
+                                <col>
+                                <col style="width:20%;">
+                                <col style="width:20%;">
+                                <col style="width:90px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Value</th>
+                                    <th>Defualt</th>
+                                    <th>Description</th>
+                                    <th>Data Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="code">name</td>
+                                    <td><input class="parameter required" minlength="1" placeholder="(required)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>회원명</td>
+                                    <td><span class="model-signature">String</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">email</td>
+                                    <td><input class="parameter required" minlength="1" placeholder="(required)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>이메일</td>
+                                    <td><span class="model-signature">String</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">birth</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>생년월일</td>
+                                    <td><span class="model-signature">Date</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">phone</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>전화번호</td>
+                                    <td><span class="model-signature">String</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">address</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>주소</td>
+                                    <td><span class="model-signature">String</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">occupation</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>직업</td>
+                                    <td><span class="model-signature">String</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">password</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>패스워드</td>
+                                    <td><span class="model-signature">String</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="out none">
+<pre><code>// Sucess
+{
+    "result": "sucess"
+}
+
+// Error
+{
+    "result": "error"
+}
+</code></pre>
+                    </div>
+                </div>
+            </li>
+            <li class="put">
+                <div class="heading">
+                    <span class="type">PUT</span>
+                    <span class="path">/db/teacher/{id}</span>
+                    <span class="comment">강사정보 업데이트</span>
+                </div>
+                <div class="content none">
+                    <h5>Parameters</h5>
+                    <div class="tab">
+                        <dl>
+                            <dt data-type="in" class="on">In</dt>
+                            <dt data-type="out">Out</dt>
+                        </dl>
+                    </div>
+                    <div class="in">
+                        <table>
+                            <colgroup>
+                                <col style="width:10%;">
+                                <col>
+                                <col style="width:20%;">
+                                <col style="width:20%;">
+                                <col style="width:90px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Value</th>
+                                    <th>Defualt</th>
+                                    <th>Description</th>
+                                    <th>Data Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="code">id</td>
+                                    <td><input class="parameter required" minlength="1" placeholder="(required)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>회원 ID</td>
+                                    <td><span class="model-signature">Number</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">name</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>회원명</td>
+                                    <td><span class="model-signature">String</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">email</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>이메일</td>
+                                    <td><span class="model-signature">String</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">birth</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>생년월일</td>
+                                    <td><span class="model-signature">Date</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">phone</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>전화번호</td>
+                                    <td><span class="model-signature">String</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">address</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>주소</td>
+                                    <td><span class="model-signature">String</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="code">occupation</td>
+                                    <td><input class="parameter option" minlength="1" placeholder="(option)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>직업</td>
+                                    <td><span class="model-signature">String</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="out none">
+<pre><code>// Sucess
+{
+    "result": "sucess"
+}
+
+// Error
+{
+    "result": "error"
+}
+</code></pre>
+                    </div>
+                </div>
+            </li>
+
+            <li class="delete">
+                <div class="heading">
+                    <span class="type">DELETE</span>
+                    <span class="path">/db/teacher/{id}</span>
+                    <span class="comment">강사 삭제하기</span>
+                </div>
+                <div class="content none">
+                    <h5>Parameters</h5>
+                    <div class="tab">
+                        <dl>
+                            <dt data-type="in" class="on">In</dt>
+                            <dt data-type="out">Out</dt>
+                        </dl>
+                    </div>
+                    <div class="in">
+                        <table>
+                            <colgroup>
+                                <col style="width:10%;">
+                                <col>
+                                <col style="width:20%;">
+                                <col style="width:20%;">
+                                <col style="width:90px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Value</th>
+                                    <th>Defualt</th>
+                                    <th>Description</th>
+                                    <th>Data Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="code">id</td>
+                                    <td><input class="parameter required" minlength="1" placeholder="(required)" type="text" value=""></td>
+                                    <td></td>
+                                    <td>회원 ID</td>
+                                    <td><span class="model-signature">Number</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="out none">
+<pre><code>// Sucess
+{
+    "result": "sucess"
+}
+
+// Error
+{
+    "result": "error"
+}
+</code></pre>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+<!-- 제품관리 -->
+    <h3>Product</h3>
+    <h4>제품정보 조회/추가/수정/삭제</h4>
+
+    <div class="list">
+        <ul>
+            <li class="get">
+                <div class="heading">
+                    <span class="type">GET</span>
+                    <span class="path">/db/product</span>
+                    <span class="comment">제품 리스트 출력</span>
+                </div>
+                <div class="content none">
+                </div>
+            </li>
+            <li class="put">
+                <div class="heading">
+                    <span class="type">PUT</span>
+                    <span class="path">/db/product/{id}</span>
+                    <span class="comment">제품 정보 업데이트</span>
+                </div>
+                <div class="content none">
+                </div>
+            </li>
+            <li class="delete">
+                <div class="heading">
+                    <span class="type">DELETE</span>
+                    <span class="path">/db/product/{id}</span>
+                    <span class="comment">제품 삭제하기</span>
+                </div>
+                <div class="content none">
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+<!-- 매출관리 -->
+    <h3>Product</h3>
+    <h4>매출정보 조회/추가/수정/삭제</h4>
+
+    <div class="list">
+        <ul>
+            <li class="get">
+                <div class="heading">
+                    <span class="type">GET</span>
+                    <span class="path">/db/sales/in</span>
+                    <span class="comment">수익 정보 출력</span>
+                </div>
+                <div class="content none">
+                </div>
+            </li>
+            <li class="put">
+                <div class="heading">
+                    <span class="type">PUT</span>
+                    <span class="path">/db/sales/in</span>
+                    <span class="comment">수익 정보 입력</span>
+                </div>
+                <div class="content none">
+                </div>
+            </li>
+            <li class="delete">
+                <div class="heading">
+                    <span class="type">DELETE</span>
+                    <span class="path">/db/sales/in/{id}</span>
+                    <span class="comment">수익 정보 삭제</span>
+                </div>
+                <div class="content none">
+                </div>
+            </li>
+            <li class="get">
+                <div class="heading">
+                    <span class="type">GET</span>
+                    <span class="path">/db/sales/out</span>
+                    <span class="comment">지출 정보 출력</span>
+                </div>
+                <div class="content none">
+                </div>
+            </li>
+            <li class="put">
+                <div class="heading">
+                    <span class="type">PUT</span>
+                    <span class="path">/db/sales/out</span>
+                    <span class="comment">지출 정보 입력</span>
+                </div>
+                <div class="content none">
+                </div>
+            </li>
+            <li class="delete">
+                <div class="heading">
+                    <span class="type">DELETE</span>
+                    <span class="path">/db/sales/out/{id}</span>
+                    <span class="comment">지출 정보 삭제</span>
+                </div>
+                <div class="content none">
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+<style>
+h1 {font-size:32px; margin-top:40px; padding-bottom:10px;}
+h2 {font-size:24px; margin-top:40px; padding-bottom:7px; border-bottom:1px solid #ddd;}
+h3 {font-size:15px; font-weight:700; color:#333; margin:40px 0 10px 0; padding:30px 0 10px; border-top:1px solid #ddd;}
+h4 {font-size:12px; color:#333; margin-bottom:10px; padding-bottom:10px;}
+h5 {font-size:16px; color:#333; margin-bottom:20px;}
+p {padding:5px 0;}
+pre {background-color:#eee; margin:10px 0; border:1px solid #bbb; padding:20px; border-radius:5px; overflow:auto;}
+
+.wrap {max-width:980px; margin:0 auto; padding:45px;}
+.title {position:absolute; top:0; left:0; width:100%; padding:10px 15px; font-weight:bold; font-size:13px; font-weight:400; background-color:#f6f8fa; border-bottom:1px solid #ddd;}
+.none {display:none;}
+.list {margin:20px 0;}
+.list ul li {position:relative; width:100%; font-size:13px; margin-bottom:10px;}
+.list ul li .heading {cursor:pointer; width:100%; height:30px; background-color:#f2f2f2; border-radius:4px; vertical-align:middle;}
+.list ul li .heading {border:1px solid #ddd;}
+.list ul li .heading .type {display:inline-block; width:50px; height:100%; text-align:center; color:#fff; font-size:10px; font-weight:bold; padding-top:6px;}
+.list ul li .heading .path {padding:0 20px; color:#333;}
+.list ul li .heading .comment {float:right; padding:4px 15px 0 0; font-weight:600;}
+/* GET */
+.list ul li.get .heading {border-color:#1D7CA7;}
+.list ul li.get .heading .type {background-color:#1D7CA7;}
+.list ul li.get .heading .comment {color:#1D7CA7;}
+/* POST */
+.list ul li.post .heading {border-color:#15B946;}
+.list ul li.post .heading .type {background-color:#15B946;}
+.list ul li.post .heading .comment {color:#15B946;}
+/* PUT */
+.list ul li.put .heading {border-color:#FA9400;}
+.list ul li.put .heading .type {background-color:#FA9400;}
+.list ul li.put .heading .comment {color:#FA9400;}
+/* DELETE */
+.list ul li.delete .heading {border-color:#E50000;}
+.list ul li.delete .heading .type {background-color:#E50000;}
+.list ul li.delete .heading .comment {color:#E50000;}
+
+.content {padding:25px 0 40px;}
+.content table {width:100%; padding:5px; font-size:0.9em; color:#666666; border-bottom:1px solid #999999;}
+.content table thead tr th {border-bottom:1px solid #ddd; font-size:10px; padding:8px 5px;}
+.content table tbody tr td {padding-left:5px; padding-right:30px; padding-top:5px; padding-bottom:10px; border-bottom:1px solid #ddd;}
+.content input[type=text] {background-color:#eaecec; border:1px solid #aaa; border-radius:4px; color:#666; width:100%; height:35px; padding:10px 15px;}
+.content textarea {background-color:#eaecec; border:1px solid #aaa; border-radius:4px; color:#666; width:100%; height:100px; padding:8px 25px 4px;}
+
+.tab {border-bottom:1px solid #aaa; height:30px;}
+.tab dl {font-size:0;}
+.tab dl dt {cursor:pointer; display:inline-block; font-size:13px; width:60px; height:29px; padding-top:6px; text-align:center; border:1px solid #aaa; border-bottom:1px solid #aaa; margin-top:1px; margin-left:-1px; background-color:#ddd; font-size:11px;}
+.tab dl dt.on {background-color:#fff; border-bottom:1px solid #fff;}
+.tab dl dt:first-child {margin-left:0;}
+</style>
+
+<script>
+$('.list .heading').click(function(){
+    $target = $(this).parent().find('.content');
+    $('.content').not($target).slideUp();
+    $target.slideToggle()
+})
+
+$('.tab dt').click(function(){
+    $(this).parent().find('.on').removeClass('on')
+    $(this).addClass('on')
+    if($(this).attr('data-type') == 'in'){
+        $(this).closest('.content').find('.in').removeClass('none')
+        $(this).closest('.content').find('.out').addClass('none')
+    }else{
+        $(this).closest('.content').find('.in').addClass('none')
+        $(this).closest('.content').find('.out').removeClass('none')
+    }
+})
+</script>
+
 </body>
 </html>
