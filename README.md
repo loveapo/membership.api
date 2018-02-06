@@ -1,0 +1,2 @@
+# api.membership
+Membership API
